@@ -1,0 +1,29 @@
+class Task implements Runnable {
+    public void run(){
+        System.out.println("Thread:"+Thread.currentThread().getName());
+        Thread.yield();
+        System.out.println("Back to Thread:"+Thread.currentThread().getName());
+    }
+}
+
+public class MyThread {
+    public static void main (String []args) {
+        for(int i=0; i<5; i++)
+        {
+            new Thread(new Task()).start();
+        }
+    }
+}
+
+--------------------------
+
+Thread:Thread-4
+Thread:Thread-0
+Thread:Thread-3
+Thread:Thread-2
+Thread:Thread-1
+Back to Thread:Thread-4
+Back to Thread:Thread-0
+Back to Thread:Thread-1
+Back to Thread:Thread-2
+Back to Thread:Thread-3
